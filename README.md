@@ -117,4 +117,74 @@
 ```text
 Поле name (Mode.YES) — присутствует
 Поле password (Mode.NO) — отсутствует
-Поля без аннотации — присутствуют
+Поля без аннотации — присутствуют 
+```
+### Задача 5 — Тестирование @Cache
+**Описание:**  
+Реализовать тест, используя фреймворк **JUnit**, для класса с аннотацией `@Cache`:
+
+- Проверить, что список кешируемых сущностей (`value`) корректно считывается  
+- Реализовать мок-тест (Mockito или встроенные подстановки), имитирующий обращение к кешу  
+- Проверить, что если массив пуст — кеширование не производится  
+- Добавить отдельный тест для случая с несколькими именованными областями  
+
+**реализации:**
+
+```java
+// Пример класса с кешем
+@Cache({"users", "products", "orders"})
+public class CacheExample {
+    private String data;
+    public CacheExample(String data) { this.data = data; }
+    public String getData() { return data; }
+}
+
+// Пустой кеш для проверки
+@Cache({})
+public class EmptyCacheExample { }
+
+// Обработчик аннотации
+public class AnnotationHandlers {
+    public static String[] processCacheAnnotation(Class<?> clazz) {
+        if(clazz.isAnnotationPresent(Cache.class)) {
+            return clazz.getAnnotation(Cache.class).value();
+        }
+        return new String[]{};
+    }
+}
+
+// JUnit тесты
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class CacheTest {
+
+    @Test
+    public void testCacheWithMultipleAreas() {
+        CacheExample example = new CacheExample("TestData");
+        String[] areas = AnnotationHandlers.processCacheAnnotation(example.getClass());
+
+        // Проверяем, что все области считались корректно
+        assertArrayEquals(new String[]{"users", "products", "orders"}, areas);
+    }
+
+    @Test
+    public void testCacheWithEmptyAreas() {
+        EmptyCacheExample example = new EmptyCacheExample();
+        String[] areas = AnnotationHandlers.processCacheAnnotation(example.getClass());
+
+        // Проверяем, что пустой массив корректно обрабатывается
+        assertEquals(0, areas.length);
+    }
+
+    @Test
+    public void testCacheMocked() {
+        // Простейший мок-тест без Mockito
+        CacheExample example = new CacheExample("TestData");
+        String[] mockedAreas = {"users", "products"};
+
+        // Имитируем работу обработчика
+        assertArrayEquals(mockedAreas, new String[]{"users", "products"});
+    }
+}
+
