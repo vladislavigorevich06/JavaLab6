@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>@Cache</title>
+    <link rel="stylesheet" href="../resource-files/stylesheet.css">
+</head>
+<body>
+<h1>Аннотация @Cache</h1>
+<p>Аннотация для указания кешируемых областей объекта.</p>
+<h2>Применение</h2>
+<p>Список кешируемых сущностей указывается через параметр value:</p>
+<pre>
+@Cache({"users", "products", "orders"})
+public class CacheExample { ... }
+</pre>
+<h2>Назначение</h2>
+<ul>
+    <li>Упрощение доступа к кешируемым областям.</li>
+    <li>Автоматическое создание кеша для указанных областей.</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>ToStringExample</title>
+    <link rel="stylesheet" href="../resource-files/stylesheet.css">
+</head>
+<body>
+<h1>Класс ToStringExample</h1>
+<p>Пример использования аннотации <code>@ToString</code> для управления строковым представлением объекта.</p>
+
+<h2>Конструктор</h2>
+<pre>
+public ToStringExample(String name, String password, int age, String email)
+</pre>
+<p>Инициализация полей объекта.</p>
+
+<h2>Методы</h2>
+<ul>
+    <li><b>getName()</b> — возвращает имя</li>
+    <li><b>getPassword()</b> — возвращает пароль</li>
+    <li><b>getAge()</b> — возвращает возраст</li>
+    <li><b>getEmail()</b> — возвращает email</li>
+    <li><b>isPasswordHidden()</b> — проверяет, скрыт ли пароль</li>
+    <li><b>toCustomString()</b> — формирует строковое представление объекта с учетом аннотации</li>
+</ul>
+
+<h2>Примеры использования</h2>
+<pre>
+ToStringExample obj = new ToStringExample("Alice", "12345", 25, "a@b.com");
+System.out.println(obj.toCustomString());
+</pre>
+</body>
+</html>

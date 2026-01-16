@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>@ToString</title>
+    <link rel="stylesheet" href="../resource-files/stylesheet.css">
+</head>
+<body>
+<h1>Аннотация @ToString</h1>
+<p>Аннотация для указания, какие поля включать в строковое представление объекта.</p>
+<h2>Применение</h2>
+<ul>
+    <li>Поля с <code>Mode.YES</code> будут отображаться в <code>toCustomString()</code>.</li>
+    <li>Поля с <code>Mode.NO</code> будут скрыты.</li>
+</ul>
+<h2>Поля</h2>
+<p>value(): Mode — режим отображения поля (YES/NO)</p>
+<h2>Примеры</h2>
+<pre>
+@ToString(Mode.YES)
+private String name;
+
+@ToString(Mode.NO)
+private String password;
+</pre>
+</body>
+</html>

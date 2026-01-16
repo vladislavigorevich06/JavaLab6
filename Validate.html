@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>@Validate</title>
+    <link rel="stylesheet" href="../resource-files/stylesheet.css">
+</head>
+<body>
+<h1>Аннотация @Validate</h1>
+<p>Аннотация для проверки корректности типов классов.</p>
+<h2>Применение</h2>
+<p>Указывается массив классов, которые будут валидироваться:</p>
+<pre>
+@Validate({String.class, Integer.class, Double.class})
+public class ValidateExample { ... }
+</pre>
+<h2>Назначение</h2>
+<ul>
+    <li>Проверка входных данных на соответствие допустимым типам.</li>
+    <li>Обработка ошибок при передаче неверного класса.</li>
+</ul>
+</body>
+</html>
